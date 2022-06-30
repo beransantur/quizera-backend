@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 const Question = require("../models/questionModel");
 
+//this is for saving the questions from api to DB
 const saveApiQuestions = async (req, res) => {
   const response = await axios.get(
     "https://opentdb.com/api.php?amount=50&category=18&difficulty=medium&type=multiple"
