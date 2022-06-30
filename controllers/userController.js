@@ -3,6 +3,11 @@ const bcrypt = require("bcrypt");
 
 const registerUser = async (req, res) => {
   try {
+    const foundUser = await User.findOne({ email: req.body.email });
+    if (foundUser) {
+      res.json({ userAlreadyExists: foundUser._id });
+      return;
+    }
     const newUser = req.body;
 
     const salt = await bcrypt.genSalt(10);
