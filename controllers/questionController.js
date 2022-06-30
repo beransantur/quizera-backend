@@ -20,6 +20,19 @@ const saveApiQuestions = async (req, res) => {
   res.json(formatedQuestions);
 };
 
+const getQuestionsFromDb = async (req, res) => {
+  const foundQuestions = await Question.find();
+  const shuffledQuestions = shuffleArray(foundQuestions);
+
+  const newQuestions = [];
+
+  for (let i = 0; i < 10; i++) {
+    newQuestions.push(shuffledQuestions[i]);
+  }
+
+  res.json(newQuestions);
+};
+
 function shuffleArray(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -30,4 +43,5 @@ function shuffleArray(a) {
 
 module.exports = {
   saveApiQuestions,
+  getQuestionsFromDb,
 };
