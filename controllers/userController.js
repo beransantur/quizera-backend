@@ -25,14 +25,14 @@ const loginUser = async (req, res) => {
   try {
     const foundUser = await User.findOne({ email: req.body.email });
     if (!foundUser) {
-      res.json({ error: "user not found" });
+      res.json({ error: "user with this email is not found." });
     } else {
       const isPasswordCorrect = await bcrypt.compare(
         req.body.password,
         foundUser.password
       );
       if (!isPasswordCorrect) {
-        res.json({ error: "password is not correct" });
+        res.json({ error: "password is not correct." });
       } else {
         const formatedLoggedInUser = {
           _id: foundUser._id,
