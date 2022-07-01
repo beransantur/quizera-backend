@@ -16,9 +16,12 @@ app.use("/users", userRouter);
 app.use("/questions", questionRouter);
 app.use("/leaderBoard", leaderBoardRouter);
 
-mongoose.connect(process.env.DB_CONNECTION, () => {
-  console.log("connected to db!");
-});
+mongoose.connect(
+  "mongodb+srv://beransantur:65432ac@cluster0.22ayi.mongodb.net/quizera",
+  () => {
+    console.log("connected to db!");
+  }
+);
 
 app.listen(5000, () => {
   console.log("System is working..");
