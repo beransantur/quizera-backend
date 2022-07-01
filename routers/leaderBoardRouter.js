@@ -1,7 +1,7 @@
 const {
   createLeaderBoardMember,
   getLeaderBoardMembers,
-} = require("../controllerS/leaderBoardController");
+} = require("../controllers/leaderBoardController");
 
 const express = require("express");
 const router = express.Router();

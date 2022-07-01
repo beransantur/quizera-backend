@@ -1,7 +1,7 @@
 const {
   saveApiQuestions,
   getQuestionsFromDb,
-} = require("../controllerS/questionController");
+} = require("../controllers/questionController");
 const express = require("express");
 
 const router = express.Router();
