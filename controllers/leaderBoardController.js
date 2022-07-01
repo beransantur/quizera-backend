@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const LeaderBoardMember = require("../models/leaderBoardModel");
 
 const createLeaderBoardMember = async (req, res) => {
+  console.log(req.body);
   const foundUser = await User.findOne({ _id: req.body._id });
   const score = req.body.score;
   const newMember = {
