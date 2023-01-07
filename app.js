@@ -16,12 +16,15 @@ app.use("/users", userRouter);
 app.use("/questions", questionRouter);
 app.use("/leaderBoard", leaderBoardRouter);
 
-mongoose.connect(process.env.DB_CONNECTION, () => {
-  console.log("connected to db!");
-});
+mongoose.connect(process.env.DB_CONNECTION)
+    .then(() => console.log("Db connection is done"))
+    .catch((err) => console.log("There is an error connection to db: " + err))
 
-//important for heroku
+//important for deployment
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log("System is working..");
+app.listen(port, (err) => {
+  if(err) {
+    console.log("There is an error while trying to execute the system" + err)
+  }
+  console.log("System is up on port " + port);
 });
